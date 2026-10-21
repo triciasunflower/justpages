@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Just Pages Studio</title>
+  <meta name="description" content="Learn about Just Pages Studio and its printable planner, worksheet, puzzle, and spreadsheet generators." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=11" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark">J</span>
+      <span><strong>Just Pages Studio</strong><em>Printable generators</em></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/#generators">Generators</a>
+      <a href="/about.html" class="active">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+      <p class="eyebrow">About</p>
+      <h1 class="page-title">A simple studio for printable pages.</h1>
+      <p class="page-intro">Just Pages Studio brings everyday printable tools into one clean place, so you can make practical pages for planning, learning, puzzles, and small business organization without starting from scratch.</p>
+    </section>
+
+    <section class="page-section">
+      <div class="info-grid">
+        <div class="info-card"><h3>Made for quick creation</h3><p>Choose a generator, adjust the options, and create a ready-to-use page in just a few steps.</p></div>
+        <div class="info-card"><h3>Useful for home and school</h3><p>Create worksheets, puzzle pages, planners, trackers, logs, and templates for everyday projects.</p></div>
+        <div class="info-card"><h3>Designed to stay clean</h3><p>The site focuses on simple layouts, readable pages, and printer-friendly output.</p></div>
+      </div>
+
+      <div class="content-panel">
+        <h2>What you can make</h2>
+        <p>The site currently includes four main generator areas: Planner Studio, Worksheet Studio, Puzzle Studio, and Sheet Studio. Each one is designed for a different type of printable or editable page, while keeping the overall experience consistent.</p>
+        <ul class="simple-list">
+          <li>Planners, journals, trackers, and organized printable pages.</li>
+          <li>Grade-level worksheets with clean formatting and answer-key options.</li>
+          <li>Printable puzzles such as word searches, mazes, sudoku, and logic-style pages.</li>
+          <li>Editable spreadsheet templates for budgets, calendars, inventories, logs, and planning.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Just Pages Studio. Printable and editable generators for planning, learning, puzzles, and spreadsheets.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
