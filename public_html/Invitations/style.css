@@ -1,0 +1,601 @@
+:root {
+  --bg: #f6f1ea;
+  --panel: rgba(255,255,255,0.92);
+  --ink: #253033;
+  --muted: #6a7679;
+  --line: #e4ddd3;
+  --accent: #c98091;
+  --card-bg: #fffaf7;
+  --soft: #f4e7eb;
+  --shadow: 0 18px 48px rgba(52, 43, 34, 0.12);
+  --headline-font: Inter, sans-serif;
+  --name-font: "Playfair Display", Georgia, serif;
+  --body-font: Inter, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 0%, #fff2df 0, transparent 28%),
+    radial-gradient(circle at 88% 10%, #eef4f1 0, transparent 24%),
+    var(--bg);
+}
+
+h1, h2, h3, p { margin-top: 0; }
+button { font: inherit; }
+
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 34px clamp(18px, 5vw, 64px) 18px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 520;
+}
+
+.primary-btn,
+.secondary-btn {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover { transform: translateY(-1px); }
+
+.primary-btn {
+  padding: 14px 18px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgba(37,48,51,0.22);
+  white-space: nowrap;
+}
+
+.secondary-btn {
+  padding: 11px 14px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.secondary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.full { width: 100%; }
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(315px, 420px) 1fr;
+  gap: 24px;
+  padding: 20px clamp(18px, 5vw, 64px) 56px;
+  align-items: start;
+}
+
+.control-panel {
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: grid;
+  gap: 16px;
+  padding-right: 8px;
+}
+
+.panel-card,
+.preview-area {
+  background: var(--panel);
+  border: 1px solid rgba(228,221,211,0.95);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.panel-card { padding: 22px; }
+.preview-area { padding: 24px; min-height: 760px; overflow: auto; }
+.panel-card h2 { margin: 0 0 14px; font-size: 18px; letter-spacing: -0.02em; }
+
+.panel-help {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  color: #415052;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 13px;
+  color: var(--ink);
+  font: inherit;
+}
+
+textarea { resize: vertical; }
+input[type="color"] { min-height: 44px; padding: 5px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toggle-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.button-row { display: grid; gap: 10px; margin-top: 14px; }
+.inline-actions { grid-template-columns: 1fr; }
+
+.preview-toolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.preview-toolbar h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+.design-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.invitation-preview {
+  display: grid;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0 24px;
+}
+
+.print-sheet {
+  width: 8.5in;
+  min-height: 11in;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  padding: 0.28in;
+  gap: 0.18in;
+  border-radius: 14px;
+  box-shadow: 0 16px 42px rgba(52,43,34,0.14);
+}
+
+.two-layout .print-sheet { grid-template-rows: 1fr 1fr; }
+
+.invitation-card {
+  position: relative;
+  overflow: hidden;
+  width: 5in;
+  height: 7in;
+  background: var(--card-bg);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 50%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.75);
+}
+
+.size-4x6.portrait .invitation-card { width: 4in; height: 6in; }
+.size-4x6.landscape .invitation-card { width: 6in; height: 4in; }
+.size-5x7.portrait .invitation-card { width: 5in; height: 7in; }
+.size-5x7.landscape .invitation-card { width: 7in; height: 5in; }
+.size-square .invitation-card { width: 5in; height: 5in; }
+
+.card-surface {
+  position: absolute;
+  inset: 0;
+}
+
+.card-inner {
+  position: absolute;
+  inset: 0.54in 0.52in;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 0.12in;
+}
+
+.landscape .card-inner {
+  inset: 0.45in 0.6in;
+}
+
+.content-box {
+  width: min(100%, 3.7in);
+  display: grid;
+  justify-items: center;
+  gap: 0.12in;
+}
+
+.size-square .content-box { width: min(100%, 3.45in); }
+.landscape .content-box { width: min(100%, 5.2in); }
+
+.invite-kicker {
+  color: var(--accent);
+  font: 800 0.13in var(--body-font);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.invite-headline {
+  margin: 0;
+  font-family: var(--headline-font);
+  font-size: 0.34in;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.invite-name {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--name-font);
+  font-size: 0.56in;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.invite-subtitle,
+.invite-note,
+.invite-rsvp {
+  margin: 0;
+  font-family: var(--body-font);
+  color: var(--muted);
+}
+
+.invite-subtitle {
+  font-size: 0.18in;
+  font-weight: 780;
+}
+
+.invite-note,
+.invite-rsvp {
+  font-size: 0.13in;
+  line-height: 1.42;
+  font-weight: 650;
+}
+
+.invite-rsvp { color: var(--accent); font-weight: 800; }
+
+.detail-stack {
+  width: min(100%, 3.55in);
+  display: grid;
+  gap: 0.08in;
+  margin-top: 0.04in;
+}
+
+.detail-item {
+  padding: 0.08in 0.08in;
+  border-top: 1px solid color-mix(in srgb, var(--accent), transparent 58%);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 0.14in;
+  font-weight: 750;
+}
+
+.back-card .content-box { width: min(100%, 3.4in); }
+.back-card .invite-name { font-size: 0.38in; }
+.back-card .invite-note { font-size: 0.16in; max-width: 3.2in; }
+
+/* Sticker layer */
+.sticker-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sticker {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: calc(var(--size) * 1%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(calc(var(--rotate) * 1deg));
+  color: var(--accent);
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  z-index: 6;
+}
+
+.sticker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 3px 10px rgba(37,48,51,0.08));
+}
+
+.sticker.selected::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed color-mix(in srgb, var(--accent), #000 8%);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Sticker library */
+.sticker-library {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sticker-chip {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  color: var(--ink);
+}
+.sticker-chip:hover { border-color: color-mix(in srgb, var(--accent), transparent 45%); }
+.sticker-chip svg { width: 28px; height: 28px; color: var(--accent); }
+.sticker-chip span { font-size: 11px; font-weight: 700; text-align: center; }
+
+/* Minimal design families */
+.invitation-card::before,
+.invitation-card::after,
+.card-surface::before,
+.card-surface::after,
+.card-inner::before,
+.card-inner::after { pointer-events: none; }
+
+.design-minimal-border::before {
+  content: "";
+  position: absolute;
+  inset: 0.18in;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 18%);
+}
+
+.design-double-border::before,
+.design-double-border::after {
+  content: "";
+  position: absolute;
+  inset: 0.16in;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 20%);
+}
+.design-double-border::after { inset: 0.27in; }
+
+.design-editorial::before,
+.design-editorial::after {
+  content: "";
+  position: absolute;
+  left: 0.42in;
+  right: 0.42in;
+  height: 1px;
+  background: color-mix(in srgb, var(--accent), transparent 32%);
+}
+.design-editorial::before { top: 0.42in; }
+.design-editorial::after { bottom: 0.42in; }
+
+.design-side-stripe::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.42in;
+  background: color-mix(in srgb, var(--soft), var(--accent) 18%);
+}
+.design-side-stripe .card-inner {
+  inset-left: 0.9in;
+  inset: 0.54in 0.52in 0.54in 0.95in;
+  justify-items: start;
+  text-align: left;
+}
+.design-side-stripe .content-box,
+.design-side-plaque .content-box,
+.design-split-band .content-box { justify-items: start; text-align: left; }
+.design-side-stripe .detail-stack,
+.design-side-plaque .detail-stack,
+.design-split-band .detail-stack { width: min(100%, 3.9in); }
+
+.design-top-band::before {
+  content: "";
+  position: absolute;
+  left: 0.28in;
+  right: 0.28in;
+  top: 0.28in;
+  height: 0.34in;
+  background: color-mix(in srgb, var(--soft), var(--accent) 18%);
+  border-radius: 999px;
+}
+.design-top-band .card-inner { inset-top: 0.95in; inset: 0.95in 0.52in 0.54in; }
+
+.design-bottom-band::after {
+  content: "";
+  position: absolute;
+  left: 0.28in;
+  right: 0.28in;
+  bottom: 0.28in;
+  height: 0.28in;
+  background: color-mix(in srgb, var(--soft), var(--accent) 18%);
+  border-radius: 999px;
+}
+
+.design-arch-frame::before {
+  content: "";
+  position: absolute;
+  left: 0.42in;
+  right: 0.42in;
+  top: 0.34in;
+  bottom: 0.34in;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 16%);
+  border-top-left-radius: 1.35in 1in;
+  border-top-right-radius: 1.35in 1in;
+  border-bottom-left-radius: 0.12in;
+  border-bottom-right-radius: 0.12in;
+}
+
+.design-plaque .content-box,
+.design-side-plaque .content-box {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 58%);
+  border-radius: 20px;
+  padding: 0.24in 0.2in;
+  box-shadow: 0 6px 18px rgba(37,48,51,0.05);
+}
+.design-side-plaque::before {
+  content: "";
+  position: absolute;
+  left: 0.22in;
+  top: 0.22in;
+  bottom: 0.22in;
+  width: 0.22in;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--soft), var(--accent) 20%);
+}
+.design-side-plaque .card-inner {
+  inset: 0.56in 0.5in 0.56in 0.78in;
+  justify-items: start;
+  text-align: left;
+}
+
+.design-fine-stripes {
+  background-image:
+    linear-gradient(90deg, color-mix(in srgb, var(--soft), #fff 32%) 0, color-mix(in srgb, var(--soft), #fff 32%) 0.09in, transparent 0.09in, transparent 0.24in),
+    linear-gradient(180deg, transparent, transparent);
+  background-size: 0.24in 100%, 100% 100%;
+}
+
+.design-split-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 34%;
+  background: color-mix(in srgb, var(--soft), #fff 15%);
+}
+.design-split-band::after {
+  content: "";
+  position: absolute;
+  top: 0.42in;
+  bottom: 0.42in;
+  left: 34%;
+  width: 1px;
+  background: color-mix(in srgb, var(--accent), transparent 40%);
+}
+.design-split-band .card-inner {
+  inset: 0.54in 0.48in 0.54in 2in;
+  justify-items: start;
+  text-align: left;
+}
+
+.design-corner-lines::before,
+.design-corner-lines::after,
+.design-corner-lines .card-surface::before,
+.design-corner-lines .card-surface::after {
+  content: "";
+  position: absolute;
+  width: 0.55in;
+  height: 0.55in;
+  border-color: color-mix(in srgb, var(--accent), transparent 18%);
+}
+.design-corner-lines::before { top: 0.28in; left: 0.28in; border-top: 1px solid; border-left: 1px solid; }
+.design-corner-lines::after { top: 0.28in; right: 0.28in; border-top: 1px solid; border-right: 1px solid; }
+.design-corner-lines .card-surface::before { bottom: 0.28in; left: 0.28in; border-bottom: 1px solid; border-left: 1px solid; }
+.design-corner-lines .card-surface::after { bottom: 0.28in; right: 0.28in; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* Font presets */
+.font-modern .invite-headline, .font-modern .invite-name, .font-modern .invite-subtitle, .font-modern .invite-note, .font-modern .invite-rsvp, .font-modern .detail-item, .font-modern .invite-kicker { font-family: var(--body-font); }
+.font-elegant .invite-headline { font-family: var(--headline-font); }
+.font-elegant .invite-name { font-family: var(--name-font); }
+.font-script .invite-name { font-family: var(--name-font); }
+.font-script .invite-headline { font-family: var(--headline-font); }
+
+/* size tweaks */
+.size-square .invite-name { font-size: 0.48in; }
+.size-square .invite-headline { font-size: 0.30in; }
+.landscape .invite-name { font-size: 0.48in; }
+.landscape .invite-headline { font-size: 0.30in; }
+.landscape .detail-stack { width: min(100%, 4.3in); }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .control-panel { position: static; max-height: none; overflow: visible; }
+}
+@media (max-width: 760px) {
+  .site-header { flex-direction: column; align-items: stretch; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .preview-toolbar { flex-direction: column; align-items: flex-start; }
+  .sticker-library { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Print */
+@media print {
+  body { background: #fff; }
+  .site-header, .control-panel, .preview-toolbar { display: none !important; }
+  .app-shell { display: block; padding: 0; }
+  .preview-area {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .invitation-preview { padding: 0; gap: 0; }
+  .print-sheet {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.25in;
+    border-radius: 0;
+    box-shadow: none;
+    page-break-after: always;
+  }
+}

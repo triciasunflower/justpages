@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sheet Studio | Just Pages Studio</title>
+  <meta name="description" content="Generate editable .xlsx spreadsheet templates for budgets, trackers, logs, calendars, and small business workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=13" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Editable Spreadsheet Generator</p>
+      <h1>Sheet Studio</h1>
+      <p class="subtitle">
+        Create clean editable spreadsheet templates as .xlsx files. Open them in Google Sheets, Excel, or Numbers.
+      </p>
+    </div>
+    <div class="header-actions">
+      <a class="home-link" href="https://justpages.studio/" aria-label="Back to Just Pages Studio main page">← Main Page</a>
+      <button id="downloadBtn" class="primary-btn">Download Excel File</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="control-panel" aria-label="Sheet builder controls">
+      <section class="builder-summary-card">
+        <div>
+          <span class="step-pill">Sheet Builder</span>
+          <h2 id="summaryTemplateName">Monthly Budget</h2>
+          <p id="currentSummary">50 rows · $ USD · Sage Minimal</p>
+        </div>
+      </section>
+
+      <details class="panel-card compact-card collapsible-panel" open>
+        <summary class="panel-summary">
+          <div class="panel-heading">
+            <span class="step-number">1</span>
+            <div>
+              <h2>Choose template</h2>
+              <p>Pick a spreadsheet style to start with.</p>
+            </div>
+          </div>
+          <span class="collapse-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="panel-content">
+          <div class="template-search-wrap">
+            <input id="templateSearch" type="search" placeholder="Search budget, tracker, calendar..." />
+          </div>
+
+          <div class="popular-strip" aria-label="Popular templates">
+            <span>Popular</span>
+            <button type="button" class="quick-template" data-quick-template="budget">Budget</button>
+            <button type="button" class="quick-template" data-quick-template="etsy">Etsy</button>
+            <button type="button" class="quick-template" data-quick-template="inventory">Inventory</button>
+            <button type="button" class="quick-template" data-quick-template="content">Content</button>
+          </div>
+
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="template-count-label" id="templateCountLabel">Showing all sheets</div>
+          <div class="template-gallery" id="templateGallery"></div>
+        </div>
+      </details>
+
+      <details class="panel-card compact-card collapsible-panel" open>
+        <summary class="panel-summary">
+          <div class="panel-heading">
+            <span class="step-number">2</span>
+            <div>
+              <h2>Personalize</h2>
+              <p>Name the sheet and choose the basic settings.</p>
+            </div>
+          </div>
+          <span class="collapse-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="panel-content">
+          <label>
+            Spreadsheet title
+            <input id="sheetTitle" type="text" value="Monthly Budget" />
+          </label>
+
+          <label>
+            Name / owner
+            <input id="ownerName" type="text" value="Tricia" />
+          </label>
+
+          <div class="grid-2">
+            <label>
+              Start date
+              <input id="startDate" type="date" />
+            </label>
+
+            <label>
+              Rows
+              <select id="rowCount">
+                <option value="25">25 rows</option>
+                <option value="50" selected>50 rows</option>
+                <option value="100">100 rows</option>
+                <option value="200">200 rows</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid-2">
+            <label>
+              Currency
+              <select id="currency">
+                <option value="$" selected>$ USD</option>
+                <option value="€">€ EUR</option>
+                <option value="£">£ GBP</option>
+                <option value="">No currency</option>
+              </select>
+            </label>
+
+            <label>
+              Style
+              <select id="theme">
+                <option value="sage" selected>Sage Minimal</option>
+                <option value="sky">Soft Sky</option>
+                <option value="blush">Blush</option>
+                <option value="ink">Classic Ink</option>
+              </select>
+            </label>
+          </div>
+
+          <details class="advanced-options">
+            <summary>Advanced options</summary>
+
+            <label>
+              Date entry style
+              <select id="dateEntryStyle">
+                <option value="real" selected>Real dates: type 10/23/2025</option>
+                <option value="quick">Quick entry: type 10232025 → 10/23/2025</option>
+              </select>
+              <small>Real dates are best for sorting, filtering, and formulas.</small>
+            </label>
+
+            <label class="toggle-row">
+              <input id="includeInstructions" type="checkbox" checked />
+              <span>Include instructions sheet</span>
+            </label>
+
+            <label class="toggle-row">
+              <input id="includeSummary" type="checkbox" checked />
+              <span>Include summary sheet when useful</span>
+            </label>
+          </details>
+
+          <div class="button-row action-buttons">
+            <button id="refreshBtn" class="secondary-btn full" type="button">Update Preview</button>
+            <button id="csvBtn" class="secondary-btn full" type="button">Export CSV</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="panel-card compact-card info-card collapsible-panel" open>
+        <summary class="panel-summary">
+          <div class="panel-heading">
+            <span class="step-number">3</span>
+            <div>
+              <h2>Template info</h2>
+              <p>Quick details about the file you are creating.</p>
+            </div>
+          </div>
+          <span class="collapse-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="panel-content">
+          <div id="templateInfo" class="info-list"></div>
+        </div>
+      </details>
+
+    </aside>
+
+    <section class="preview-area">
+      <div class="preview-toolbar">
+        <div>
+          <p class="eyebrow">Live Preview</p>
+          <h2 id="previewTitle">Monthly Budget</h2>
+        </div>
+        <div class="toolbar-actions">
+          <button id="sampleBtn" class="secondary-btn" type="button">Use Sample Data</button>
+          <button id="clearBtn" class="secondary-btn" type="button">Clear Samples</button>
+        </div>
+      </div>
+
+      <div class="sheet-preview-card">
+        <div class="sheet-meta">
+          <div>
+            <span id="metaTemplate">Budget</span>
+            <strong id="metaTitle">Monthly Budget</strong>
+          </div>
+          <span id="metaOwner">Prepared for Tricia</span>
+        </div>
+
+        <div class="table-scroll">
+          <table id="previewTable"></table>
+        </div>
+      </div>
+
+      <section class="notes-card">
+        <h3>How this works</h3>
+        <p>
+          This tool creates a real .xlsx workbook in the browser. Users can upload the file to Google Drive and open it with Google Sheets.
+          No Google login or API connection is required for this first version.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js?v=13"></script>
+</body>
+</html>
